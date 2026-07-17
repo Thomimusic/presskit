@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THOMI — Press Kit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Expanded:wght@700;900&family=Work+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #16101B;
+    --surface: #1F1725;
+    --surface-2: #271C2E;
+    --accent: #E8963F;
+    --accent-2: #5FA39A;
+    --text: #F3E9DE;
+    --text-dim: #A0909C;
+    --line: rgba(243,233,222,0.14);
+    --display: 'Archivo Expanded', sans-serif;
+    --body: 'Work Sans', sans-serif;
+    --mono: 'Space Mono', monospace;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  html { scroll-behavior:smooth; }
+
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--body);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+
+  a { color:var(--accent); text-decoration:none; }
+  a:focus-visible, button:focus-visible { outline:2px solid var(--accent); outline-offset:3px; }
+
+  .wrap{ max-width:920px; margin:0 auto; padding:0 28px; }
+
+  section{ padding:96px 0; border-bottom:1px solid var(--line); }
+  section:last-of-type{ border-bottom:none; }
+
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin-bottom:16px;
+    display:block;
+  }
+
+  h2{
+    font-family:var(--display);
+    font-weight:900;
+    font-size:clamp(28px,4vw,42px);
+    letter-spacing:-0.01em;
+    margin-bottom:32px;
+    text-transform:uppercase;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100svh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:60px 0 40px;
+    border-bottom:1px solid var(--line);
+    overflow:hidden;
+  }
+
+  .hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+      radial-gradient(ellipse 60% 50% at 80% 10%, rgba(232,150,63,0.14), transparent),
+      radial-gradient(ellipse 50% 40% at 10% 90%, rgba(95,163,154,0.12), transparent);
+    pointer-events:none;
+  }
+
+  .spine{
+    position:absolute;
+    right:24px;
+    top:0;
+    bottom:0;
+    display:flex;
+    align-items:center;
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.4em;
+    color:var(--text-dim);
+    writing-mode:vertical-rl;
+    text-transform:uppercase;
+  }
+
+  .wordmark{
+    font-family:var(--display);
+    font-weight:900;
+    font-size:clamp(64px,15vw,148px);
+    line-height:0.88;
+    letter-spacing:-0.02em;
+    text-transform:uppercase;
+    position:relative;
+    z-index:1;
+  }
+
+  .wordmark .accent-dot{ color:var(--accent); }
+
+  .hero-tagline{
+    font-size:clamp(16px,2.2vw,20px);
+    color:var(--text-dim);
+    max-width:520px;
+    margin-top:20px;
+    position:relative;
+    z-index:1;
+  }
+
+  .hero-meta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:32px;
+    position:relative;
+    z-index:1;
+  }
+
+  .pill{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.06em;
+    padding:8px 14px;
+    border:1px solid var(--line);
+    border-radius:100px;
+    color:var(--text-dim);
+    text-transform:uppercase;
+  }
+
+  .hero-cta{
+    display:flex;
+    gap:16px;
+    margin-top:40px;
+    position:relative;
+    z-index:1;
+  }
+
+  .btn{
+    font-family:var(--mono);
+    font-size:13px;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    padding:14px 26px;
+    border-radius:2px;
+    cursor:pointer;
+    transition:transform 0.15s ease, background 0.15s ease;
+  }
+  .btn-primary{ background:var(--accent); color:var(--bg); border:1px solid var(--accent); font-weight:700; }
+  .btn-primary:hover{ transform:translateY(-2px); }
+  .btn-ghost{ background:transparent; color:var(--text); border:1px solid var(--line); }
+  .btn-ghost:hover{ border-color:var(--accent); color:var(--accent); }
+
+  /* ---------- STEP SEQUENCER (signature element) ---------- */
+  .sequencer{
+    margin-top:56px;
+    position:relative;
+    z-index:1;
+  }
+  .seq-label{
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--text-dim);
+    letter-spacing:0.1em;
+    margin-bottom:10px;
+    display:flex;
+    justify-content:space-between;
+  }
+  .seq-grid{
+    display:grid;
+    grid-template-columns:repeat(16,1fr);
+    gap:6px;
+  }
+  .seq-cell{
+    aspect-ratio:1;
+    border-radius:3px;
+    background:var(--surface-2);
+    border:1px solid var(--line);
+    position:relative;
+  }
+  .seq-cell.kick{ background:rgba(232,150,63,0.18); border-color:rgba(232,150,63,0.4); }
+  .seq-cell.hat{ background:rgba(95,163,154,0.14); border-color:rgba(95,163,154,0.3); }
+
+  .seq-cell::after{
+    content:"";
+    position:absolute; inset:0;
+    border-radius:3px;
+    background:var(--accent);
+    opacity:0;
+  }
+
+  @media (prefers-reduced-motion: no-preference){
+    .seq-cell::after{ animation:chase 3.2s linear infinite; }
+    .seq-cell:nth-child(1)::after{ animation-delay:0s; }
+    .seq-cell:nth-child(2)::after{ animation-delay:0.2s; }
+    .seq-cell:nth-child(3)::after{ animation-delay:0.4s; }
+    .seq-cell:nth-child(4)::after{ animation-delay:0.6s; }
+    .seq-cell:nth-child(5)::after{ animation-delay:0.8s; }
+    .seq-cell:nth-child(6)::after{ animation-delay:1.0s; }
+    .seq-cell:nth-child(7)::after{ animation-delay:1.2s; }
+    .seq-cell:nth-child(8)::after{ animation-delay:1.4s; }
+    .seq-cell:nth-child(9)::after{ animation-delay:1.6s; }
+    .seq-cell:nth-child(10)::after{ animation-delay:1.8s; }
+    .seq-cell:nth-child(11)::after{ animation-delay:2.0s; }
+    .seq-cell:nth-child(12)::after{ animation-delay:2.2s; }
+    .seq-cell:nth-child(13)::after{ animation-delay:2.4s; }
+    .seq-cell:nth-child(14)::after{ animation-delay:2.6s; }
+    .seq-cell:nth-child(15)::after{ animation-delay:2.8s; }
+    .seq-cell:nth-child(16)::after{ animation-delay:3.0s; }
+  }
+
+  @keyframes chase{
+    0%, 93.75%, 100%{ opacity:0; }
+    3%{ opacity:0.85; }
+  }
+
+  /* ---------- BIO ---------- */
+  .bio-grid{
+    display:grid;
+    grid-template-columns:340px 1fr;
+    gap:48px;
+    align-items:start;
+  }
+  .photo-slot{
+    aspect-ratio:3/4;
+    border:1px solid var(--line);
+    border-radius:4px;
+    background:var(--surface);
+    overflow:hidden;
+  }
+  .photo-slot img{
+    width:100%; height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .pullquote{
+    font-family:var(--display);
+    font-weight:700;
+    font-size:clamp(22px,3vw,30px);
+    color:var(--accent);
+    line-height:1.3;
+    margin:28px 0;
+    max-width:480px;
+  }
+  .bio-text p{ margin-bottom:18px; color:var(--text); max-width:560px; }
+  .bio-text p.dim{ color:var(--text-dim); font-size:14px; }
+
+  /* ---------- SOUND ---------- */
+  .chips{ display:flex; flex-wrap:wrap; gap:10px; margin-bottom:36px; }
+  .chip{
+    font-family:var(--mono);
+    font-size:13px;
+    padding:9px 16px;
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:2px;
+  }
+  .chip.ref{ border-color:rgba(232,150,63,0.35); }
+  .sound-note{ color:var(--text-dim); font-size:15px; max-width:560px; }
+
+  /* ---------- JOURNEY ---------- */
+  .timeline{ position:relative; padding-left:28px; }
+  .timeline::before{
+    content:"";
+    position:absolute; left:5px; top:6px; bottom:6px;
+    width:1px;
+    background:var(--line);
+  }
+  .tl-item{ position:relative; margin-bottom:36px; }
+  .tl-item:last-child{ margin-bottom:0; }
+  .tl-item::before{
+    content:"";
+    position:absolute; left:-28px; top:4px;
+    width:11px; height:11px;
+    border-radius:50%;
+    background:var(--bg);
+    border:2px solid var(--accent);
+  }
+  .tl-year{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--accent);
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    display:block;
+    margin-bottom:6px;
+  }
+  .tl-title{ font-weight:600; margin-bottom:4px; }
+  .tl-desc{ color:var(--text-dim); font-size:14px; max-width:520px; }
+
+  /* ---------- COLLECTIVES ---------- */
+  .collective-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+  }
+  .collective-card{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:32px;
+    position:relative;
+  }
+  .collective-card::before{
+    content:attr(data-format);
+    position:absolute;
+    top:20px; right:20px;
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--accent-2);
+    letter-spacing:0.08em;
+  }
+  .collective-name{
+    font-family:var(--display);
+    font-weight:900;
+    font-size:22px;
+    text-transform:uppercase;
+    margin-bottom:10px;
+  }
+  .collective-desc{ color:var(--text-dim); font-size:14px; }
+
+  /* ---------- LISTEN ---------- */
+  .player-frame{
+    border:1px solid var(--line);
+    border-radius:4px;
+    overflow:hidden;
+    background:var(--surface);
+  }
+
+  /* ---------- GALLERY ---------- */
+  .gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+  }
+  .gallery-slot{
+    aspect-ratio:4/5;
+    border:1px solid var(--line);
+    border-radius:4px;
+    background:var(--surface);
+    position:relative;
+    overflow:hidden;
+    transition:border-color 0.2s ease;
+  }
+  .gallery-slot:hover{ border-color:var(--accent); }
+  .gallery-slot img{
+    width:100%; height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .gallery-slot .cap{
+    position:absolute;
+    left:0; right:0; bottom:0;
+    padding:20px 14px 12px;
+    background:linear-gradient(to top, rgba(22,16,27,0.92), transparent);
+  }
+  .gallery-slot .cap span{
+    font-family:var(--mono);
+    font-size:10px;
+    color:var(--text);
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+  }
+  .gallery-slot .ring{
+    width:38px; height:38px;
+    border-radius:50%;
+    border:2px solid var(--accent);
+    position:relative;
+  }
+  .gallery-slot .ring::after{
+    content:"";
+    position:absolute; inset:13px;
+    border-radius:50%;
+    background:var(--accent);
+  }
+
+  /* ---------- RIDER / AVAILABILITY ---------- */
+  .rider-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+  }
+  .rider-list{ list-style:none; }
+  .rider-list li{
+    font-family:var(--mono);
+    font-size:13px;
+    color:var(--text-dim);
+    padding:10px 0;
+    border-bottom:1px solid var(--line);
+    display:flex;
+    justify-content:space-between;
+    gap:16px;
+  }
+  .rider-list li span:first-child{ color:var(--text); }
+  .note{
+    font-size:13px;
+    color:var(--text-dim);
+    margin-top:16px;
+    font-style:italic;
+  }
+
+  /* ---------- CONTACT ---------- */
+  .contact{ text-align:left; }
+  .contact-name{
+    font-family:var(--display);
+    font-weight:900;
+    font-size:clamp(32px,5vw,52px);
+    text-transform:uppercase;
+    margin-bottom:24px;
+  }
+  .contact-grid{
+    display:flex;
+    flex-wrap:wrap;
+    gap:32px;
+    margin-top:24px;
+  }
+  .contact-item{ font-family:var(--mono); font-size:14px; }
+  .contact-item .label{
+    display:block;
+    color:var(--text-dim);
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    margin-bottom:6px;
+  }
+
+  footer{
+    padding:32px 0 60px;
+    text-align:center;
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--text-dim);
+    letter-spacing:0.05em;
+  }
+
+  @media (max-width:720px){
+    .bio-grid{ grid-template-columns:1fr; }
+    .photo-slot{ max-width:380px; margin:0 auto; }
+    .collective-grid{ grid-template-columns:1fr; }
+    .rider-grid{ grid-template-columns:1fr; }
+    .gallery-grid{ grid-template-columns:repeat(2,1fr); }
+    .seq-grid{ grid-template-columns:repeat(8,1fr); grid-template-rows:repeat(2,1fr); }
+    .spine{ display:none; }
+    section{ padding:64px 0; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="spine">House · Deep House</div>
+    <div class="wrap">
+      <h1 class="wordmark">THOMI<span class="accent-dot">.</span></h1>
+      <p class="hero-tagline">Groove rooted in drums. House and deep house between Concepción and Cologne — drums that hit with intention, chords that breathe.</p>
+      <div class="hero-meta">
+        <span class="pill">Concepción, Chile → Cologne, DE</span>
+        <span class="pill">Vinyl + Digital</span>
+        <span class="pill">Chicago · Detroit · French House</span>
+      </div>
+      <div class="hero-cta">
+        <button class="btn btn-primary" onclick="document.getElementById('listen').scrollIntoView()">Listen to sets</button>
+        <button class="btn btn-ghost" onclick="document.getElementById('contact').scrollIntoView()">Booking</button>
+      </div>
+
+      <div class="sequencer" aria-hidden="true">
+        <div class="seq-label"><span>PATTERN</span><span>4/4</span></div>
+        <div class="seq-grid">
+          <div class="seq-cell kick"></div><div class="seq-cell"></div><div class="seq-cell hat"></div><div class="seq-cell"></div>
+          <div class="seq-cell kick"></div><div class="seq-cell"></div><div class="seq-cell hat"></div><div class="seq-cell"></div>
+          <div class="seq-cell kick"></div><div class="seq-cell"></div><div class="seq-cell hat"></div><div class="seq-cell"></div>
+          <div class="seq-cell kick"></div><div class="seq-cell"></div><div class="seq-cell hat"></div><div class="seq-cell"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BIO -->
+  <section id="bio">
+    <div class="wrap">
+      <span class="eyebrow">About Thomi</span>
+      <div class="bio-grid">
+        <div class="photo-slot"><img src="images/portrait.jpg" alt="Thomi in the studio with turntable, headphones on"></div>
+        <div class="bio-text">
+          <p class="pullquote">"Before he played a track, he played drums."</p>
+          <p>He started at 14. That rhythmic foundation — the groove, the pulse, the physical urgency of a drum kit — is the backbone of everything he produces and mixes today. At 17, he traded the cymbals for his first controller, and from there the path was direct: from EDM to house, and from house to a deeper sound, rooted in the Chicago, Detroit and French schools.</p>
+          <p>Raised in the Concepción, Chile scene, where he held a residency at Club Boga, he now lives and produces in Cologne, Germany — mixing on vinyl and digital, with chords that breathe and drums that hit with intention. His collaborations — KinkyGroove and People From Nowhere — reflect what he values most about this scene: playing in community, not alone.</p>
+          <p class="dim">Currently in active music production.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOUND -->
+  <section id="sound">
+    <div class="wrap">
+      <span class="eyebrow">Sound</span>
+      <h2>House &amp; Deep House</h2>
+      <div class="chips">
+        <span class="chip">House</span>
+        <span class="chip">Deep House</span>
+        <span class="chip">Chicago House</span>
+        <span class="chip">Detroit House</span>
+        <span class="chip">French House</span>
+      </div>
+      <p class="sound-note" style="margin-bottom:20px;">Emphasis on drums with character and chords that stand out. References:</p>
+      <div class="chips">
+        <span class="chip ref">Franck Roger</span>
+        <span class="chip ref">Kerri Chandler</span>
+        <span class="chip ref">Demuja</span>
+        <span class="chip ref">Paradiso Rhythm</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOURNEY -->
+  <section id="journey">
+    <div class="wrap">
+      <span class="eyebrow">Path</span>
+      <h2>Journey</h2>
+      <div class="timeline">
+        <div class="tl-item">
+          <span class="tl-year">Age 14</span>
+          <div class="tl-title">First hits on the drum kit</div>
+          <div class="tl-desc">The origin of the groove. Years of rhythmic training before touching a single electronic track.</div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-year">2014 — Age 17</span>
+          <div class="tl-title">First controller</div>
+          <div class="tl-desc">Entry through EDM. The search for a personal sound starts moving toward house.</div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-year">Concepción, Chile</span>
+          <div class="tl-title">Residency — Club Boga</div>
+          <div class="tl-desc">Sustained club experience over time, the foundation of his development as a DJ.</div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-year">Today</span>
+          <div class="tl-title">Cologne, Germany</div>
+          <div class="tl-desc">Mixing on vinyl and digital. In active production, working toward his first original release.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COLLECTIVES -->
+  <section id="collectives">
+    <div class="wrap">
+      <span class="eyebrow">Community</span>
+      <h2>Joint Projects</h2>
+      <div class="collective-grid">
+        <div class="collective-card" data-format="B2B">
+          <div class="collective-name">KinkyGroove</div>
+          <div class="collective-desc">B2B with Netolious, his longtime mixing partner. A direct dialogue between two selections that know each other inside out.</div>
+        </div>
+        <div class="collective-card" data-format="B3B">
+          <div class="collective-name">People From Nowhere</div>
+          <div class="collective-desc">B3B with Netolious and German. Three selectors, one community — house understood as something collective.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LISTEN -->
+  <section id="listen">
+    <div class="wrap">
+      <span class="eyebrow">Listen</span>
+      <h2>Sets</h2>
+      <div class="player-frame">
+        <iframe width="100%" height="300" scrolling="no" frameborder="no"
+          src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/thomimusik&color=%23e8963f&auto_play=false&show_user=true&show_reposts=false&visual=false">
+        </iframe>
+      </div>
+      <p class="note" style="margin-top:12px;">Player will populate once tracks/sets are uploaded to the SoundCloud account.</p>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery">
+    <div class="wrap">
+      <span class="eyebrow">Visual</span>
+      <h2>Gallery</h2>
+      <div class="gallery-grid">
+        <div class="gallery-slot"><img src="images/gallery-live.jpg" alt="Thomi playing a live outdoor set on Pioneer decks"><div class="cap"><span></span></div></div>
+        <div class="gallery-slot"><img src="images/gallery-club.jpg" alt="Thomi playing at a club, crowd in front of the decks"><div class="cap"><span></span></div></div>
+        <div class="gallery-slot"><img src="images/gallery-editorial.jpg" alt="Thomi under red architectural lighting at a venue"><div class="cap"><span></span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RIDER / AVAILABILITY -->
+  <section id="rider">
+    <div class="wrap">
+      <span class="eyebrow">Technical &amp; availability</span>
+      <h2>Rider &amp; Routes</h2>
+      <div class="rider-grid">
+        <div>
+          <ul class="rider-list">
+            <li><span>Format</span><span>Vinyl + Digital</span></li>
+            <li><span>Turntables</span><span>2× Technics 1200/1210 or equiv.</span></li>
+            <li><span>Digital player</span><span>2× CDJ or equiv.</span></li>
+            <li><span>Mixer</span><span>4 channels min., phono inputs</span></li>
+          </ul>
+          <p class="note">Specific models to be confirmed per venue.</p>
+        </div>
+        <div>
+          <ul class="rider-list">
+            <li><span>Based in</span><span>Cologne, Germany</span></li>
+            <li><span>Available</span><span>Europe</span></li>
+            <li><span>Available</span><span>Chile / Latam (route-dependent)</span></li>
+          </ul>
+          <p class="note">Flight coordination needed in advance for dates outside Europe.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <span class="eyebrow">Booking</span>
+      <div class="contact-name">Let's talk.</div>
+      <div class="contact-grid">
+        <div class="contact-item"><span class="label">Email</span><a href="mailto:booking@thomimusic.com">booking@thomimusic.com</a></div>
+        <div class="contact-item"><span class="label">Instagram</span><a href="https://instagram.com/jung.thomass" target="_blank" rel="noopener">@jung.thomass</a></div>
+        <div class="contact-item"><span class="label">SoundCloud</span><a href="https://soundcloud.com/thomimusik" target="_blank" rel="noopener">soundcloud.com/thomimusik</a></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>THOMI — HOUSE &amp; DEEP HOUSE — PRESS KIT © 2026</footer>
+
+</body>
+</html>
